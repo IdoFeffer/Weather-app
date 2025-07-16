@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <main class="weather-app">
+      <h1>Weather App</h1>
+
+      <section class="search-box">
+        <input type="text" id="city-input" placeholder="Enter city name..." />
+        <button id="search-btn">Search</button>
+        <button id="location-btn">📍 Use My Location</button>
+      </section>
+
+      <!-- Loader -->
+      <div id="loader" class="hidden">
+        <div class="spinner"></div>
+      </div>
+
+      <!-- Weather Info -->
+      <section class="weather-info hidden">
+        <h2 id="city-name"></h2>
+        <img id="weather-icon" src="" alt="Weather Icon" />
+        <p id="temperature"></p>
+        <p id="description"></p>
+      </section>
+
+      <!-- Weather  -->
+      <div class="rain"></div>
+      <div class="lightning-flash"></div>
+
+      <!-- Error -->
+      <p id="error-msg" class="hidden">City not found. Please try again.</p>
+    </main>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
