@@ -53,6 +53,7 @@ function clearWeatherClasses() {
 
   removeSunEffect();
   removeCloudEffect();
+  removeRainEffect()
 }
 
 // Clear weather
@@ -84,4 +85,20 @@ function addCloudEffect() {
 function removeCloudEffect() {
   const cloud = document.querySelector(".cloud-float")
   if (cloud) cloud.remove()
+}
+
+// Rain
+function addRainEffect() {
+  if (!document.querySelector('.rain-overlay')) {
+    const rainImg = document.createElement('img')
+    rainImg.src = 'img/rain.jpg'
+    rainImg.alt = 'rain'
+    rainImg.classList.add('rain-overlay')
+    document.body.appendChild(rainImg)
+  }
+}
+
+function removeRainEffect() {
+  const rain = document.querySelector('.rain-overlay')
+  if (rain) rain.remove()
 }
