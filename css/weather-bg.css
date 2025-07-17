@@ -1,44 +1,42 @@
-body.weather-clear {
-  background: url('../img/clear.jpg') center center / cover no-repeat;
-}
-body.weather-rain {
-  background: url('../img/rain.jpg') center center / cover no-repeat;
-}
-body.weather-snow {
-  background: url('../img/snow.jpg') center center / cover no-repeat;
-}
-body.weather-cloud {
-  background: url('../img/cloud.jpg') center center / cover no-repeat;
-}
-body.weather-fog {
-  background: url('../img/fog.jpg') center center / cover no-repeat;
-}
-body.weather-thunderstorm {
-  background: url('../img/thunderstorm.jpg') center center / cover no-repeat;
-}
-
+/* Clear */
 .sun-rays {
   position: absolute;
-  top: 40px;
-  right: 40px;
-  width: 100px;
-  height: 100px;
-  background: radial-gradient(circle at center, #FFD700, #FFA500);
-  border-radius: 50%;
-  box-shadow: 0 0 60px 20px rgba(255, 215, 0, 0.4);
-  animation: pulseSun 3s ease-in-out infinite;
+  top: 50%;
+  left: 50%;
+  width: 220px;
+  height: 220px;
+  transform: translate(-50%, -50%);
   z-index: 0;
   pointer-events: none;
+  animation: spinSun 20s linear infinite;
 }
 
-@keyframes pulseSun {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
+@keyframes spinSun {
+  from {
+    transform: rotate(0deg);
   }
-  50% {
-    opacity: 0.8;
-    transform: scale(1.05);
+  to {
+    transform: rotate(360deg);
   }
 }
 
+/* Cloud  */
+.cloud-float {
+  position: absolute;
+  bottom: 32%;
+  left: 50%;
+  width: 250px;
+  transform: translateX(50%);
+  pointer-events: none;
+  z-index: 1;
+  animation: floatCloud 8s ease-in-out infinite alternate;
+}
+
+@keyframes floatCloud {
+  0% {
+    transform: translateX(-5%);
+  }
+  100% {
+    transform: translateX(-30%);
+  }
+}
