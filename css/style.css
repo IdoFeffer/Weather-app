@@ -8,13 +8,13 @@
 body {
   font-family: Arial, sans-serif;
   background: linear-gradient(to top right, #74ebd5, #acb6e5);
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  z-index: 0; 
+  min-height: 100vh;
   overflow: hidden; 
+  z-index: 0; 
 }
 
 
@@ -146,7 +146,7 @@ h1 {
     font-size: 24px;
   }
 
-  #temperature {
+  .temperature {
     font-size: 36px;
   }
 }
@@ -172,15 +172,48 @@ h1 {
 
 /* PHONE  */
 @media (max-width: 640px) {
-  .weather-app {
-    background-color: transparent !important;
-    box-shadow: none !important;
-    border: none !important;
-    padding: 0 !important;
-  }
-
   body {
     padding: 20px;
+    flex-direction: column;
+    align-items: stretch;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .weather-app {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: none;
+  }
+
+  h1 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .search-box {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #city-input {
+    font-size: 16px;
+    padding: 12px;
+    width: 100%;
+  }
+
+  #search-btn,
+  #location-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  .weather-info {
+    text-align: center;
+    margin-right: 10em;
   }
 
   .weather-info img {
@@ -188,11 +221,14 @@ h1 {
     height: 60px;
   }
 
-  #temperature {
-    font-size: 30px;
-  }
-
-  h1 {
-    font-size: 20px;
+  .sun-rays,
+  .cloud-float,
+  .rain-overlay,
+  .snow-overlay,
+  .fog-overlay,
+  .thunderstorm-overlay {
+    width: 160px !important;
+    height: 160px !important;
+    top: 50% !important;
   }
 }

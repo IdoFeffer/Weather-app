@@ -67,3 +67,116 @@
     transform: translate(-40%, -50%) translateY(0px);
   }
 }
+
+/* Thunderstorm  */
+.thunderstorm-overlay {
+  position: absolute;
+  bottom: 30%;
+  left: 50%;
+  width: 250px;
+  transform: translateX(50%);
+  pointer-events: none;
+  z-index: 1;
+  animation: floatThunder 5s ease-in-out infinite alternate,
+             flashLightning 1.2s ease-in-out infinite;
+}
+
+@keyframes floatThunder {
+  0% {
+    transform: translateX(40%);
+  }
+  100% {
+    transform: translateX(-40%);
+  }
+}
+
+@keyframes flashLightning {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(2.2);
+  }
+}
+
+/* Snow */
+.snow-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 220px;
+  height: 220px;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+  animation: fallSnow 6s ease-in-out infinite alternate;
+}
+
+@keyframes fallSnow {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) translateY(0);
+  }
+  100% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) translateY(25px);
+  }
+}
+
+/* Fog  */
+.fog-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 250px;
+  height: 250px;
+  transform: translate(-50%, -50%);
+  opacity: 0.4;
+  filter: blur(4px);
+  pointer-events: none;
+  z-index: 0;
+  animation: driftFog 8s ease-in-out infinite alternate;
+}
+
+@keyframes driftFog {
+  0% {
+    transform: translate(-50%, -50%) translateX(0);
+  }
+  100% {
+    transform: translate(-50%, -50%) translateX(20px);
+  }
+}
+
+
+
+
+/* Five days weather  */
+.weekly-forecast {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 3rem;
+  overflow-x: auto;
+  /* flex-wrap: nowrap; */
+}
+
+.forecast-day {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 10px;
+  text-align: center;
+  min-width: 100px;
+  flex-shrink: 0;
+}
+
+.day-date {
+  font-weight: bold;
+  font-size: 0.9em;
+  margin-bottom: 5px;
+}
+
+.temp-range {
+  font-size: 0.85em;
+}

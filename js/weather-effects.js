@@ -53,7 +53,9 @@ function clearWeatherClasses() {
 
   removeSunEffect();
   removeCloudEffect();
-  removeRainEffect()
+  removeRainEffect();
+  removeSnowEffect();
+  removeFogEffect() ;
 }
 
 // Clear weather
@@ -81,7 +83,6 @@ function addCloudEffect() {
     document.body.appendChild(cloudImg)
   }
 }
-
 function removeCloudEffect() {
   const cloud = document.querySelector(".cloud-float")
   if (cloud) cloud.remove()
@@ -97,8 +98,53 @@ function addRainEffect() {
     document.body.appendChild(rainImg)
   }
 }
-
 function removeRainEffect() {
   const rain = document.querySelector('.rain-overlay')
   if (rain) rain.remove()
+}
+
+// Thunderstorm
+function addThunderEffect() {
+  if (!document.querySelector('.thunderstorm-overlay')) {
+    const thunderImg = document.createElement('img')
+    thunderImg.src = 'img/thunderstorm.jpg'
+    thunderImg.alt = 'thunderstorm'
+    thunderImg.classList.add('thunderstorm-overlay')
+    document.body.appendChild(thunderImg)
+  }
+}
+
+function removeThunderEffect() {
+  const thunder = document.querySelector('.thunderstorm-overlay')
+  if (thunder) thunder.remove()
+}
+
+// Snow 
+function addSnowEffect() {
+  if (!document.querySelector('.snow-overlay')) {
+    const snowImg = document.createElement('img')
+    snowImg.src = 'img/snow.jpg'
+    snowImg.alt = 'snow'
+    snowImg.classList.add('snow-overlay')
+    document.body.appendChild(snowImg)
+  }
+}
+function removeSnowEffect() {
+  const snow = document.querySelector('.snow-overlay')
+  if (snow) snow.remove()
+}
+
+// Fog
+function addFogEffect() {
+  if (!document.querySelector('.fog-overlay')) {
+    const fogImg = document.createElement('img')
+    fogImg.src = 'img/fog.jpg'
+    fogImg.alt = 'fog'
+    fogImg.classList.add('fog-overlay')
+    document.body.appendChild(fogImg)
+  }
+}
+function removeFogEffect() {
+  const fog = document.querySelector('.fog-overlay')
+  if (fog) fog.remove()
 }

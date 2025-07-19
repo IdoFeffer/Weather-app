@@ -76,6 +76,13 @@ function updateWeatherUI(data) {
   iconEl.alt = data.weather[0].main
 
   applyWeatherEffect(data.weather[0].main.toLowerCase())
+
+  // fetch and render 5-day forecast
+  fetchFiveDayForecast(data.coord.lat, data.coord.lon)
+    .then(data => {
+      const grouped = groupForecastByDay(data.list)
+      renderForecast(grouped)
+    })
 }
 
 function showError() {
@@ -91,4 +98,47 @@ function showLoader() {
 
 function hideLoader() {
   loaderEl.classList.add('hidden')
+}
+
+////////////////////////////////////
+// Forecast API:
+async function fetchFiveDayForecast(lat, lon) {
+  const res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${'80d35c72bc18da105b6ebf2215571e91'}&units=metric&lang=he`)
+  const data = await res.json()
+  return data
+}
+
+function groupForecastByDay(forecastList) {
+  const dailyTemps = {}
+
+  forecastList.forEach(entry => {
+    const date = entry.dt_txt.split(' ')[0]
+    if (!dailyTemps[date]) dailyTemps[date] = []
+    dailyTemps[date].push(entry.main.temp)
+  })
+
+  return Object.entries(dailyTemps).slice(0, 5).map(([date, temps]) => {
+    return {
+      date,
+      min: Math.min(...temps).toFixed(1),
+      max: Math.max(...temps).toFixed(1),
+    }
+  })
+}
+
+function renderForecast(forecastByDay) {
+  const elForecast = document.querySelector('.weekly-forecast')
+  if (!elForecast) return
+
+  elForecast.innerHTML = ''
+
+  forecastByDay.forEach(day => {
+    const dayEl = document.createElement('div')
+    dayEl.classList.add('forecast-day')
+    dayEl.innerHTML = `
+      <div class="day-date">${day.date}</div>
+      <div class="temp-range">${day.min}° / ${day.max}°</div>
+    `
+    elForecast.appendChild(dayEl)
+  })
 }

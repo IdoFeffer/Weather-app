@@ -22,12 +22,16 @@
       </div>
 
       <!-- Weather Info -->
-      <section class="weather-info hidden">
-        <h2 id="city-name"></h2>
-        <img id="weather-icon" src="" alt="Weather Icon" />
-        <p id="temperature"></p>
-        <p id="description"></p>
-      </section>
+      <div>
+        <section class="weather-info hidden">
+          <h2 id="city-name"></h2>
+          <p id="temperature" class="temperature"></p>
+          <p id="description"></p>
+          <img id="weather-icon" src="" alt="Weather Icon" />
+        </section>
+
+        <div class="weekly-forecast"></div>
+      </div>
 
       <!-- Error -->
       <p id="error-msg" class="hidden">City not found. Please try again.</p>
