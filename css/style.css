@@ -1,0 +1,234 @@
+/* Reset בסיסי */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to top right, #74ebd5, #acb6e5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden; 
+  z-index: 0; 
+}
+
+
+body::before {
+  content: '';
+  position: absolute;
+  inset: 0; 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1; 
+  opacity: 0; 
+  transition: opacity 0.4s ease;
+}
+
+/* תצוגת תמונת רקע לפי סוג מזג האוויר */
+body.weather-clear::before {
+  background-image: url('../img/clear.jpg');
+  opacity: 0.6;
+}
+body.weather-rain::before {
+  background-image: url('../img/rain.jpg');
+  opacity: 0.6;
+}
+body.weather-snow::before {
+  background-image: url('../img/snow.jpg');
+  opacity: 0.6;
+}
+body.weather-cloud::before {
+  background-image: url('../img/cloud.jpg');
+  opacity: 0.2;
+}
+body.weather-fog::before {
+  background-image: url('../img/fog.jpg');
+  opacity: 0.6;
+}
+body.weather-thunderstorm::before {
+  background-image: url('../img/thunderstorm.jpg');
+  opacity: 0.6;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.search-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#city-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+#search-btn,
+#location-btn {
+  padding: 10px 16px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#search-btn:hover,
+#location-btn:hover {
+  background-color: #2980b9;
+}
+
+.weather-info img {
+  width: 80px;
+  height: 80px;
+  margin: 10px 0;
+}
+
+.weather-info p {
+  font-size: 18px;
+  color: #444;
+}
+
+#error-msg {
+  color: red;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#loader {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #ddd;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+/* ////////////// MEDIA  ////////////// */
+
+/* PC */
+@media (max-width: 1120px) {
+  .weather-app {
+    max-width: 500px;
+    padding: 25px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .temperature {
+    font-size: 36px;
+  }
+}
+
+/* TABLET */
+@media (max-width: 968px) {
+  .weather-app {
+    max-width: 420px;
+    width: 90%;
+    padding: 20px;
+  }
+
+  .search-box {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #search-btn,
+  #location-btn {
+    width: 100%;
+  }
+}
+
+/* PHONE  */
+@media (max-width: 640px) {
+  body {
+    padding: 20px;
+    flex-direction: column;
+    align-items: stretch;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .weather-app {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: none;
+  }
+
+  h1 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .search-box {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #city-input {
+    font-size: 16px;
+    padding: 12px;
+    width: 100%;
+  }
+
+  #search-btn,
+  #location-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  .weather-info {
+    text-align: center;
+    margin-right: 10em;
+  }
+
+  .weather-info img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .sun-rays,
+  .cloud-float,
+  .rain-overlay,
+  .snow-overlay,
+  .fog-overlay,
+  .thunderstorm-overlay {
+    width: 160px !important;
+    height: 160px !important;
+    top: 50% !important;
+  }
+}

@@ -1,0 +1,3 @@
+config.js
+# Safety net in case secrets are ever added here
+.env
